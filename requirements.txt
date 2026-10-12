@@ -1,0 +1,30 @@
+# ============================================================
+# COMPASS-VQE requirements
+# Python 3.8 – 3.10 recommended (test with 3.9)
+#
+# IMPORTANT version constraints:
+#   - qiskit-terra must be <1.0 because qiskit.algorithms.VQE
+#     and qiskit.algorithms.optimizers were removed in 1.0.
+#   - qiskit-nature must be <0.5 because the second_quantization
+#     submodule paths (drivers.second_quantization, etc.) were
+#     replaced by second_q.* in 0.5.
+#   - qiskit-aer must match the qiskit-terra minor series.
+# ============================================================
+
+# --- Qiskit core -------------------------------------------------
+qiskit-terra==0.22.4          # provides VQE, EvolvedOperatorAnsatz, optimizers
+qiskit-aer==0.11.2            # provides Aer statevector simulator
+
+# --- Qiskit Nature (quantum chemistry) ---------------------------
+qiskit-nature==0.4.5          # last release with second_quantization API
+
+# --- PySCF (molecular integrals back-end) ------------------------
+pyscf>=2.0.0,<3.0             # required by PySCFDriver in qiskit-nature
+
+# --- Scientific computing ----------------------------------------
+numpy>=1.21,<2.0
+scipy>=1.7
+matplotlib>=3.4               # optional: only needed for plotting
+
+# --- Machine learning (used in the original script) --------------
+scikit-learn>=1.0
